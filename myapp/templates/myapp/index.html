@@ -1,0 +1,723 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechReview – Amazon Product Reviews</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { background-color: #f9fafb; color: #333; }
+
+    header {
+      background-color: #0f1111;
+      color: white;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header h1 { font-size: 1.5rem; letter-spacing: 1px; }
+    nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    nav a:hover { color: #ff9900; }
+
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background: linear-gradient(120deg, #ff9900, #ffb84d);
+      color: #fff;
+    }
+    .hero h2 { font-size: 3rem; margin-bottom: 15px; }
+    .hero p { font-size: 1.3rem; }
+    .hero button {
+      margin-top: 25px;
+      padding: 12px 30px;
+      border: none;
+      background-color: #fff;
+      color: #ff9900;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .hero button:hover { background-color: #f4f4f4; }
+
+    .section {
+      padding: 60px 5%;
+    }
+    .section h3 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 40px;
+      color: #0f1111;
+    }
+
+    .products, .articles, .testimonials {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+    }
+    .card:hover { transform: translateY(-5px); }
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+      height: 180px;
+      object-fit: cover;
+    }
+    .card h4 { margin-top: 10px; font-size: 1.3rem; }
+    .card p { font-size: 0.95rem; margin-top: 5px; }
+    .btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 15px;
+      background: #ff9900;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .btn:hover { background: #e68900; }
+
+    .testimonial-card {
+      text-align: center;
+      padding: 20px;
+    }
+    .testimonial-card img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+    .testimonial-card p { font-style: italic; margin: 10px 0; }
+
+    .newsletter {
+      text-align: center;
+      margin-top: 30px;
+    }
+    .newsletter input {
+      padding: 10px 15px;
+      width: 300px;
+      max-width: 90%;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-right: 10px;
+    }
+    .newsletter button {
+      padding: 10px 20px;
+      border: none;
+      background: #ff9900;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .newsletter button:hover { background: #e68900; }
+
+    .faq-item {
+      background: white;
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .faq-item h4 { font-size: 1.1rem; cursor: pointer; }
+    .faq-item p { display: none; margin-top: 8px; }
+
+    footer {
+      background: #0f1111;
+      color: #ddd;
+      text-align: center;
+      padding: 40px 10px;
+      margin-top: 40px;
+    }
+    footer p { font-size: 0.9rem; line-height: 1.6; }
+    footer a { color:#ff9900; text-decoration:none; }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>TechReview</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#products">Products</a>
+      <a href="#articles">Reviews</a>
+      <a href="#about">About</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h2>Find the Best Amazon Deals & Honest Reviews</h2>
+    <p>Explore top-rated gadgets, accessories, and more — reviewed just for you.</p>
+    <button onclick="scrollToSection('products')">Shop Now</button>
+  </section>
+<!-- End Hero Section -->
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechReview – Amazon Product Reviews</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Hero & Products code goes here -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechReview – Amazon Product Reviews</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  {% csrf_token %}
+  
+  <!-- Roll Dice Section -->
+  <section id="roll-dice" style="padding:40px 5%; text-align:center; background:#f0f0f0; border-radius:10px; margin:40px auto; max-width:900px;">
+    <h3 style="margin-bottom:20px;">🎲 Roll Dice: Track Amazon Prices</h3>
+
+    <input type="text" id="amazonLink" placeholder="Paste Amazon link" 
+           style="width:60%; padding:10px; border-radius:5px; border:1px solid #ccc; margin-right:10px;">
+
+    <button id="trackBtn" 
+            style="padding:10px 20px; border:none; background:#ff9900; color:white; border-radius:5px; cursor:pointer;">
+      Track Price
+    </button>
+
+    <div id="priceGraphContainer" style="margin-top:30px; display:none;">
+      <canvas id="priceGraph" style="max-width:600px; margin:auto;"></canvas>
+      <p id="priceStats" style="margin-top:10px; font-weight:bold;"></p>
+      <a id="goAmazon" href="#" target="_blank" 
+         style="display:inline-block; margin-top:10px; padding:8px 15px; background:#ff9900; color:white; border-radius:5px; text-decoration:none;">
+        Go to Amazon Product
+      </a>
+    </div>
+  </section>
+
+  <script>
+    function getCSRFToken() {
+      return document.querySelector('[name=csrfmiddlewaretoken]').value;
+    }
+
+    document.getElementById('trackBtn').addEventListener('click', async () => {
+        const link = document.getElementById('amazonLink').value.trim();
+        if (!link.includes("/dp/")) return alert("Invalid Amazon link");
+
+        const csrftoken = getCSRFToken();
+
+        try {
+            const response = await fetch('/track-price/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken
+                },
+                body: JSON.stringify({ link })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                document.getElementById('priceGraphContainer').style.display = 'block';
+                document.getElementById('priceStats').innerText = `Min: ₹${data.min} | Max: ₹${data.max}`;
+                document.getElementById('goAmazon').href = data.link;
+
+                const ctx = document.getElementById('priceGraph').getContext('2d');
+
+                // Destroy previous chart if exists
+                if (window.priceChart) window.priceChart.destroy();
+
+                window.priceChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: data.months,
+                        datasets: [{
+                            label: 'Price (₹)',
+                            data: data.prices,
+                            borderColor: '#ff9900',
+                            backgroundColor: 'rgba(255,153,0,0.2)',
+                            tension: 0.3,
+                            fill: true
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: { legend: { display: true } }
+                    }
+                });
+            } else {
+                alert(data.error || "Something went wrong");
+            }
+
+        } catch (err) {
+            alert("Error: " + err.message);
+        }
+    });
+  </script>
+</body>
+</html>
+
+
+<!-- Featured Products Section -->
+<section class="section" id="products">
+  <h3>🔥 Featured Amazon Products</h3>
+  <div class="products">
+    <div class="card" onclick="openModal(0)">
+      <img src="https://m.media-amazon.com/images/I/71aTghUQfqL._SL1500_.jpg" alt="Smartwatch">
+      <h4>NoiseFit Halo Smartwatch</h4>
+      <p>AMOLED display, Bluetooth calling, and 7-day battery life.</p>
+      <a href="#" class="btn">Check Price on Amazon</a>
+    </div>
+
+    <div class="card" onclick="openModal(1)">
+      <img src="https://m.media-amazon.com/images/I/716CRTrQzgL._SL1500_.jpg" alt="Earbuds">
+      <h4>boAt Airdopes 141</h4>
+      <p>Deep bass, fast charging, and long-lasting performance.</p>
+      <a href="#" class="btn">Check Price on Amazon</a>
+    </div>
+
+    <div class="card" onclick="openModal(2)">
+      <img src="https://m.media-amazon.com/images/I/818iNyzckGL._SL1500_.jpg" alt="Laptop">
+      <h4>ASUS Vivobook 15</h4>
+      <p>Powerful laptop for students and creators, slim and stylish.</p>
+      <a href="#" class="btn">Check Price on Amazon</a>
+    </div>
+
+    <div class="card" onclick="openModal(3)">
+      <img src="https://m.media-amazon.com/images/I/71jMrqfTI8L._SL1500_.jpg" alt="Smartphone">
+      <h4>Redmi Note 12</h4>
+      <p>High-performance smartphone with AMOLED display and fast charging.</p>
+      <a href="#" class="btn">Check Price on Amazon</a>
+    </div>
+
+    <div class="card" onclick="openModal(4)">
+      <img src="https://m.media-amazon.com/images/I/71BY+Xg9OuL._SL1500_.jpg" alt="Tablet">
+      <h4>Lenovo Tab M10</h4>
+      <p>Entertainment and productivity tablet for family and students.</p>
+      <a href="#" class="btn">Check Price on Amazon</a>
+    </div>
+  </div>
+</section>
+
+<!-- Product Modal Popup -->
+<div id="productModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:10000; overflow:auto;">
+  <div style="background:white; padding:30px; border-radius:15px; max-width:700px; width:95%; position:relative; box-shadow:0 10px 30px rgba(0,0,0,0.3); font-family:'Poppins', sans-serif;">
+    <span style="position:absolute; top:15px; right:20px; cursor:pointer; font-size:2rem; font-weight:bold;" onclick="closeModal()">&times;</span>
+    
+    <div style="display:flex; flex-direction: column; gap:20px;">
+      <img id="modalImage" src="" alt="Product Image" style="width:100%; border-radius:12px; object-fit:contain; max-height:400px;">
+
+      <div>
+        <h2 id="modalTitle" style="margin-bottom:10px;"></h2>
+        <div id="modalRating" style="margin-bottom:10px; color:#ff9900; font-size:1.2rem;"></div>
+        <p id="modalPrice" style="font-size:1.2rem; font-weight:bold; color:#0f1111; margin-bottom:15px;"></p>
+        <p id="modalDesc" style="line-height:1.6; color:#555;"></p>
+      </div>
+
+      <div>
+        <h4>Key Features:</h4>
+        <ul id="modalFeatures" style="margin-left:20px; color:#333; line-height:1.5;"></ul>
+      </div>
+
+      <div>
+        <h4>Customer Reviews:</h4>
+        <ul id="modalReviews" style="margin-left:20px; max-height:150px; overflow-y:auto; padding-right:10px; color:#555; line-height:1.5;"></ul>
+      </div>
+
+      <a id="modalLink" href="#" target="_blank" class="btn" style="margin-top:15px; display:inline-block; text-align:center; background:#ff9900; color:white; font-weight:bold; padding:12px 25px; border-radius:8px; transition:0.3s; text-decoration:none;">Check Price on Amazon</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const products = [
+  {
+    title: "NoiseFit Halo Smartwatch",
+    desc: "AMOLED display, Bluetooth calling, 7-day battery life. Perfect for fitness tracking and daily notifications.",
+    image: "https://m.media-amazon.com/images/I/71aTghUQfqL._SL1500_.jpg",
+    link: "https://www.amazon.in/dp/B09N1XXB1Q",
+    price: "₹3,499",
+    rating: 4.3,
+    features: ["AMOLED Display", "Bluetooth Calling", "7-Day Battery Life", "Fitness & Sleep Tracking", "Lightweight Design"],
+    reviews: ["Very comfortable to wear.", "Battery lasts long.", "Value for money.", "Stylish design and easy to use."]
+  },
+  {
+    title: "boAt Airdopes 141",
+    desc: "Deep bass, fast charging, and long-lasting performance. Ideal for music lovers and gamers on the go.",
+    image: "https://m.media-amazon.com/images/I/716CRTrQzgL._SL1500_.jpg",
+    link: "https://www.amazon.in/dp/B07XYZ1234",
+    price: "₹1,299",
+    rating: 4.5,
+    features: ["Deep Bass Sound", "Fast Charging", "Bluetooth 5.0", "Long Battery Life", "Compact & Comfortable Fit"],
+    reviews: ["Amazing sound quality.", "Easy to connect via Bluetooth.", "Fits perfectly in ears.", "Battery life is excellent."]
+  },
+  {
+    title: "ASUS Vivobook 15",
+    desc: "Powerful laptop for students and creators, slim and stylish. Excellent performance for multitasking and content creation.",
+    image: "https://m.media-amazon.com/images/I/818iNyzckGL._SL1500_.jpg",
+    link: "https://www.amazon.in/dp/B08XYZ4567",
+    price: "₹45,990",
+    rating: 4.4,
+    features: ["Intel i5 Processor", "8GB RAM", "512GB SSD", "Full HD Display", "Slim & Lightweight Design"],
+    reviews: ["Great performance for multitasking.", "Lightweight and portable.", "Perfect for students.", "Battery life is decent."]
+  },
+  {
+    title: "Redmi Note 12",
+    desc: "High-performance smartphone with AMOLED display and fast charging. Ideal for photography and gaming.",
+    image: "https://m.media-amazon.com/images/I/71jMrqfTI8L._SL1500_.jpg",
+    link: "https://www.amazon.in/dp/B09ABC9876",
+    price: "₹13,499",
+    rating: 4.6,
+    features: ["AMOLED Display", "5000mAh Battery", "Fast Charging", "AI Camera", "Sleek Design"],
+    reviews: ["Camera quality is amazing.", "Battery lasts all day.", "Very smooth performance."]
+  },
+  {
+    title: "Lenovo Tab M10",
+    desc: "Entertainment and productivity tablet for family and students. Great for streaming and study apps.",
+    image: "https://m.media-amazon.com/images/I/71BY+Xg9OuL._SL1500_.jpg",
+    link: "https://www.amazon.in/dp/B08DEF1234",
+    price: "₹11,999",
+    rating: 4.2,
+    features: ["10.1 inch Display", "Dolby Audio", "4GB RAM", "64GB Storage", "Lightweight & Portable"],
+    reviews: ["Good value for money.", "Perfect for kids and students.", "Battery life is decent."]
+  }
+];
+
+function openModal(index) {
+  const modal = document.getElementById('productModal');
+  modal.style.display = 'flex';
+
+  const product = products[index];
+  document.getElementById('modalImage').src = product.image;
+  document.getElementById('modalTitle').innerText = product.title;
+  document.getElementById('modalDesc').innerText = product.desc;
+  document.getElementById('modalPrice').innerText = product.price;
+
+  // Render rating as stars
+  const fullStars = Math.floor(product.rating);
+  const halfStar = product.rating - fullStars >= 0.5;
+  let starsHTML = '';
+  for(let i=0; i<fullStars; i++) starsHTML += '★';
+  if(halfStar) starsHTML += '☆';
+  document.getElementById('modalRating').innerHTML = starsHTML + ` (${product.rating})`;
+
+  // Key Features
+  const featureList = document.getElementById('modalFeatures');
+  featureList.innerHTML = '';
+  product.features.forEach(f => {
+    const li = document.createElement('li');
+    li.innerText = f;
+    featureList.appendChild(li);
+  });
+
+  // Reviews
+  const reviewList = document.getElementById('modalReviews');
+  reviewList.innerHTML = '';
+  product.reviews.forEach(r => {
+    const li = document.createElement('li');
+    li.innerText = r;
+    reviewList.appendChild(li);
+  });
+
+  // Amazon link
+  document.getElementById('modalLink').href = product.link;
+}
+
+function closeModal() {
+  document.getElementById('productModal').style.display = 'none';
+}
+</script>
+
+
+ <!-- Suggestions Section -->
+<section class="section" id="suggestions" style="padding:80px 5%; background:#f9f9f9; border-radius:15px; margin:50px auto;">
+  <h3 style="text-align:center; font-size:2.5rem; margin-bottom:50px; color:#0f1111;">💡 Top Suggestions</h3>
+
+  <div class="articles" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:25px;">
+
+    <!-- Card 1 -->
+    <div class="card suggestion-card" style="background:white; border-radius:12px; overflow:hidden; box-shadow:0 8px 20px rgba(0,0,0,0.05); transition: transform 0.3s; cursor:pointer;">
+      <img src="https://images.unsplash.com/photo-1612831455543-37f0c2f3d88a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDF8fHNtYXJ0cGhvbmVzfGVufDB8fHx8MTY5NzY5NzExMg&ixlib=rb-4.0.3&q=80&w=400" alt="Smartphones" style="width:100%; height:180px; object-fit:cover;">
+      <div style="padding:20px;">
+        <div class="badge">1</div>
+        <h4 style="margin-bottom:10px; color:#0f1111;">Top 10 Smartphones 2025</h4>
+        <p style="color:#555; margin-bottom:15px;">Explore the best smartphones launched in 2025 with top features, performance, and value.</p>
+        <a href="#" class="btn" style="background:#ff9900;">Check Suggestions</a>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card suggestion-card" style="background:white; border-radius:12px; overflow:hidden; box-shadow:0 8px 20px rgba(0,0,0,0.05); transition: transform 0.3s; cursor:pointer;">
+      <img src="https://images.unsplash.com/photo-1587825140708-71d8b09a86de?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDJ8fGxhcHRvcHN8ZW58MHx8fHwxNjk3Njk3MTU2&ixlib=rb-4.0.3&q=80&w=400" alt="Laptops" style="width:100%; height:180px; object-fit:cover;">
+      <div style="padding:20px;">
+        <div class="badge">2</div>
+        <h4 style="margin-bottom:10px; color:#0f1111;">Top 10 Laptops for Students</h4>
+        <p style="color:#555; margin-bottom:15px;">Find laptops that are perfect for studying, gaming, and content creation in 2025.</p>
+        <a href="#" class="btn" style="background:#ff9900;">Check Suggestions</a>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card suggestion-card" style="background:white; border-radius:12px; overflow:hidden; box-shadow:0 8px 20px rgba(0,0,0,0.05); transition: transform 0.3s; cursor:pointer;">
+      <img src="https://images.unsplash.com/photo-1610405066244-0a9c4f8997aa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDN8fHR3cyUyMGVhcnBob25lc3xlbnwwfHx8fDE2OTc2OTcxODU&ixlib=rb-4.0.3&q=80&w=400" alt="TWS Earphones" style="width:100%; height:180px; object-fit:cover;">
+      <div style="padding:20px;">
+        <div class="badge">3</div>
+        <h4 style="margin-bottom:10px; color:#0f1111;">Top 5 TWS Earphones</h4>
+        <p style="color:#555; margin-bottom:15px;">Discover the best truly wireless earbuds for music lovers and gamers.</p>
+        <a href="#" class="btn" style="background:#ff9900;">Check Suggestions</a>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card suggestion-card" style="background:white; border-radius:12px; overflow:hidden; box-shadow:0 8px 20px rgba(0,0,0,0.05); transition: transform 0.3s; cursor:pointer;">
+      <img src="https://images.unsplash.com/photo-1590608897129-79e6a24d052b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDR8fGJ1ZGdldCUyMHNtYXJ0cGhvbmVzfGVufDB8fHx8MTY5NzY5NzIyNg&ixlib=rb-4.0.3&q=80&w=400" alt="Budget Smartphones" style="width:100%; height:180px; object-fit:cover;">
+      <div style="padding:20px;">
+        <div class="badge">4</div>
+        <h4 style="margin-bottom:10px; color:#0f1111;">Budget-Friendly Smartphones</h4>
+        <p style="color:#555; margin-bottom:15px;">Best value smartphones under ₹15,000 that offer great performance and battery life.</p>
+        <a href="#" class="btn" style="background:#ff9900;">Check Suggestions</a>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="card suggestion-card" style="background:white; border-radius:12px; overflow:hidden; box-shadow:0 8px 20px rgba(0,0,0,0.05); transition: transform 0.3s; cursor:pointer;">
+      <img src="https://images.unsplash.com/photo-1600267168216-3f34d10386f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDV8fGdhbWluZyUyMGxhcHRvcHN8ZW58MHx8fHwxNjk3Njk3MjQ5&ixlib=rb-4.0.3&q=80&w=400" alt="Gaming Laptops" style="width:100%; height:180px; object-fit:cover;">
+      <div style="padding:20px;">
+        <div class="badge">5</div>
+        <h4 style="margin-bottom:10px; color:#0f1111;">Top Gaming Laptops 2025</h4>
+        <p style="color:#555; margin-bottom:15px;">High-performance laptops for gaming enthusiasts with latest GPUs and displays.</p>
+        <a href="#" class="btn" style="background:#ff9900;">Check Suggestions</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .suggestion-card .badge {
+    display:inline-block;
+    background:#ff9900;
+    color:#fff;
+    font-weight:bold;
+    border-radius:50%;
+    width:32px;
+    height:32px;
+    text-align:center;
+    line-height:32px;
+    font-size:1.1rem;
+    margin-bottom:10px;
+  }
+
+  .suggestion-card:hover {
+    transform: translateY(-8px);
+    box-shadow:0 15px 30px rgba(0,0,0,0.08);
+  }
+
+  .suggestion-card h4 {
+    transition: color 0.3s;
+  }
+
+  .suggestion-card:hover h4 {
+    color:#ff9900;
+  }
+</style>
+
+<!-- Testimonials -->
+<section class="section" id="testimonials" style="background:#f7f7f7; padding:80px 5%; border-radius:15px; margin:50px auto;">
+  <h3 style="text-align:center; font-size:2.5rem; margin-bottom:50px; color:#0f1111;">
+    🌟 What Our Readers Say
+  </h3>
+
+  <div style="display:flex; gap:30px; overflow-x:auto; padding-bottom:20px;">
+    <!-- Testimonial 1 -->
+    <div class="testimonial-card card" style="flex:0 0 300px; background:white; padding:25px; border-radius:15px; box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+      <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User1" style="width:70px; height:70px; border-radius:50%; object-fit:cover; margin-bottom:15px;">
+      <p>"TechReview helped me choose the perfect laptop for my studies. Highly recommend!"</p>
+      <strong>- Rohan</strong>
+      <p style="font-size:0.9rem; color:#555;">Bangalore, India • March 2025</p>
+    </div>
+
+    <!-- Testimonial 2 -->
+    <div class="testimonial-card card" style="flex:0 0 300px; background:white; padding:25px; border-radius:15px; box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+      <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User2" style="width:70px; height:70px; border-radius:50%; object-fit:cover; margin-bottom:15px;">
+      <p>"Thanks to TechReview, I got amazing deals on my headphones! The price tracking feature is amazing."</p>
+      <strong>- Priya</strong>
+      <p style="font-size:0.9rem; color:#555;">Mumbai, India • April 2025</p>
+    </div>
+
+    <!-- Testimonial 3 -->
+    <div class="testimonial-card card" style="flex:0 0 300px; background:white; padding:25px; border-radius:15px; box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+      <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="User3" style="width:70px; height:70px; border-radius:50%; object-fit:cover; margin-bottom:15px;">
+      <p>"The reviews are honest and detailed. I trust TechReview for all my tech purchases."</p>
+      <strong>- Ankit</strong>
+      <p style="font-size:0.9rem; color:#555;">Delhi, India • May 2025</p>
+    </div>
+
+    <!-- Testimonial 4 -->
+    <div class="testimonial-card card" style="flex:0 0 300px; background:white; padding:25px; border-radius:15px; box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+      <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User4" style="width:70px; height:70px; border-radius:50%; object-fit:cover; margin-bottom:15px;">
+      <p>"I love the price tracking charts! Helped me buy my tablet at the lowest price."</p>
+      <strong>- Sneha</strong>
+      <p style="font-size:0.9rem; color:#555;">Chennai, India • June 2025</p>
+    </div>
+  </div>
+
+  <p style="text-align:center; margin-top:40px; font-size:1rem; color:#777;">
+    Join thousands of satisfied readers who rely on TechReview for smart shopping decisions.
+  </p>
+</section>
+  
+
+ <!-- About -->
+<section class="section" id="about" style="background:#f4f7fb; color:#333; padding:80px 5%; border-radius:15px; margin:50px auto; box-shadow:0 10px 30px rgba(0,0,0,0.05);">
+  <h3 style="text-align:center; font-size:2.5rem; margin-bottom:50px; color:#0f1111;">
+    👋 About TechReview
+  </h3>
+
+  <p style="text-align:center; font-size:1.2rem; line-height:1.8; margin-bottom:60px; max-width:900px; margin-left:auto; margin-right:auto;">
+    Hi! I’m <strong>Swapnanil</strong> — a tech enthusiast who explores Amazon gadgets, tests them, and provides honest reviews.  
+    Our mission is to help users make informed decisions with detailed insights, price tracking, and trusted recommendations.
+  </p>
+
+  <div style="display:flex; justify-content:space-around; gap:30px; flex-wrap:wrap;">
+    <div style="flex:1 1 250px; background:white; padding:30px; border-radius:12px; text-align:center; box-shadow:0 5px 20px rgba(0,0,0,0.05); transition: transform 0.3s; cursor:pointer;">
+      <h4 style="font-size:1.6rem; margin-bottom:15px; color:#0f1111;">💡 Smart Reviews</h4>
+      <p style="font-size:1.1rem; color:#555;">In-depth product analysis to help you choose the best gadgets without wasting time or money.</p>
+    </div>
+
+    <div style="flex:1 1 250px; background:white; padding:30px; border-radius:12px; text-align:center; box-shadow:0 5px 20px rgba(0,0,0,0.05); transition: transform 0.3s; cursor:pointer;">
+      <h4 style="font-size:1.6rem; margin-bottom:15px; color:#0f1111;">📈 Price Tracking</h4>
+      <p style="font-size:1.1rem; color:#555;">Monitor Amazon prices over time so you never miss a great deal on your favorite products.</p>
+    </div>
+
+    <div style="flex:1 1 250px; background:white; padding:30px; border-radius:12px; text-align:center; box-shadow:0 5px 20px rgba(0,0,0,0.05); transition: transform 0.3s; cursor:pointer;">
+      <h4 style="font-size:1.6rem; margin-bottom:15px; color:#0f1111;">⭐ Trusted Recommendations</h4>
+      <p style="font-size:1.1rem; color:#555;">Only recommend products that are verified or personally tested to ensure real value for your money.</p>
+    </div>
+  </div>
+
+  <p style="text-align:center; margin-top:50px; font-style:italic; font-size:1rem; color:#777;">
+    “Empowering smart buyers, one review at a time.”
+  </p>
+</section>
+
+<style>
+  /* Hover effect on cards */
+  #about div[style*="box-shadow"] {
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  #about div[style*="box-shadow"]:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.08);
+  }
+</style>
+
+ <!-- Newsletter -->
+<section class="section newsletter" style="background: linear-gradient(90deg, #ff9900, #ffb84d); padding: 60px 5%; text-align:center; border-radius:15px; margin:40px auto; max-width:900px; color:#fff;">
+  <h3 style="font-size:2rem; margin-bottom:15px;">📧 Subscribe for Updates</h3>
+  <p style="margin-bottom:25px; font-size:1.1rem;">Stay updated with the latest tech reviews and Amazon deals delivered straight to your inbox.</p>
+
+  <form style="display:flex; justify-content:center; flex-wrap:wrap; gap:10px;">
+    <input type="email" placeholder="Enter your email" required 
+           style="padding:12px 20px; border:none; border-radius:8px; flex:1; min-width:250px; font-size:1rem;">
+    <button type="submit" 
+            style="padding:12px 25px; border:none; border-radius:8px; background:#0f1111; color:#ff9900; font-weight:bold; cursor:pointer; transition:0.3s;">
+      Subscribe
+    </button>
+  </form>
+
+  <p style="margin-top:15px; font-size:0.9rem; color:#fffdd0;">We respect your privacy. No spam, unsubscribe anytime.</p>
+</section>
+
+
+  <!-- FAQ -->
+<section class="section" id="faq">
+  <h3 style="text-align:center; font-size:2rem; margin-bottom:40px;">❓ Frequently Asked Questions</h3>
+
+  <div class="faq-item card">
+    <h4>Are your product reviews unbiased?</h4>
+    <p>Yes! Every review is based on actual testing and research, not just affiliate links. We focus on real performance, value, and user experience.</p>
+  </div>
+
+  <div class="faq-item card">
+    <h4>Do I need to pay extra using your Amazon links?</h4>
+    <p>No, you pay the same price as on Amazon. We earn a small commission if you purchase via our links, which helps us keep the website running.</p>
+  </div>
+
+  <div class="faq-item card">
+    <h4>How often do you update product prices?</h4>
+    <p>We track Amazon prices daily to ensure you get accurate and up-to-date pricing information, including historical trends.</p>
+  </div>
+
+  <div class="faq-item card">
+    <h4>Can I request a review for a specific product?</h4>
+    <p>Absolutely! Use our contact form to suggest products you want reviewed. We prioritize popular requests and trending gadgets.</p>
+  </div>
+
+  <div class="faq-item card">
+    <h4>Do you cover international Amazon stores?</h4>
+    <p>Currently, we focus mainly on Amazon.in (India), but we are planning to include other regional stores in the future.</p>
+  </div>
+
+  <div class="faq-item card">
+    <h4>Is my personal information safe if I subscribe to newsletters?</h4>
+    <p>Yes, we respect your privacy. Your email is only used to send updates and deals. We never share or sell your personal information.</p>
+  </div>
+
+  <div class="faq-item card">
+    <h4>Why is price tracking important?</h4>
+    <p>Price tracking helps you buy products at the lowest price. Our charts and alerts let you know when prices drop so you can save money.</p>
+  </div>
+</section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <p>
+      © 2025 TechReview • All Rights Reserved.<br>
+      As an Amazon Associate, I earn from qualifying purchases.<br>
+      <a href="#">Privacy Policy</a> | 
+      <a href="#">Affiliate Disclosure</a>
+    </p>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // FAQ toggle
+    const faqs = document.querySelectorAll('.faq-item h4');
+    faqs.forEach(faq => {
+      faq.addEventListener('click', () => {
+        const p = faq.nextElementSibling;
+        p.style.display = p.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+  </script>
+</body>
+</html>
