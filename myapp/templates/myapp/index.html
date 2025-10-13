@@ -169,7 +169,7 @@
 <section class="hero">
   <h2>Find the Best Amazon Deals & Honest Reviews</h2>
   <p>Explore top-rated gadgets, accessories, and more — reviewed just for you.</p>
-  <a href="https://www.amazon.in" target="_blank">
+  <a href="https://www.amazon.in/?tag=techrevie006f-21&linkCode=ll2&linkId=a1ecb441a060cd526b75501f72ae27c0&language=en_IN&ref_=as_li_ss_tl" target="_blank">
     <button>Shop Now</button>
   </a>
 </section>
@@ -200,6 +200,7 @@
     </div>
   </section>
 
+
   <script>
     function getCSRFToken() {
       const token = document.querySelector('[name=csrfmiddlewaretoken]');
@@ -227,6 +228,7 @@
         try {
             const csrftoken = getCSRFToken();
             
+            // First get price tracking data
             const response = await fetch('/track-price/', {
                 method: 'POST',
                 headers: {
@@ -253,9 +255,23 @@
 
             const data = await response.json();
 
+            // Now get the affiliate link
+            const affiliateResponse = await fetch('/convert-affiliate/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken,
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                body: JSON.stringify({ link })
+            });
+
+            const affiliateData = await affiliateResponse.json();
+            const affiliateLink = affiliateData.affiliate_link || link; // Fallback to original link if conversion fails
+
             document.getElementById('priceGraphContainer').style.display = 'block';
             document.getElementById('priceStats').innerText = `Min: ₹${data.min} | Max: ₹${data.max}`;
-            document.getElementById('goAmazon').href = data.link;
+            document.getElementById('goAmazon').href = affiliateLink;
 
             const ctx = document.getElementById('priceGraph').getContext('2d');
 
@@ -306,6 +322,7 @@
     });
   </script>
 
+
 <!-- Featured Products Section -->
 <section class="section" id="products">
   <h3>🔥 Featured Amazon Products</h3>
@@ -314,35 +331,35 @@
       <img src="https://m.media-amazon.com/images/I/71aTghUQfqL._SL1500_.jpg" alt="Smartwatch">
       <h4>NoiseFit Halo Smartwatch</h4>
       <p>AMOLED display, Bluetooth calling, and 7-day battery life.</p>
-      <a href="#" class="btn">Check Price on Amazon</a>
+      <a href="https://www.amazon.in/s?k=NoiseFit+Halo+Smartwatch&tag=techrevie006f-21&linkCode=ll2&linkId=a1ecb441a060cd526b75501f72ae27c0&language=en_IN&ref_=as_li_ss_tl" target="_blank" class="btn">Check Price on Amazon</a>
     </div>
 
     <div class="card" onclick="openModal(1)">
       <img src="https://m.media-amazon.com/images/I/716CRTrQzgL._SL1500_.jpg" alt="Earbuds">
       <h4>boAt Airdopes 141</h4>
       <p>Deep bass, fast charging, and long-lasting performance.</p>
-      <a href="#" class="btn">Check Price on Amazon</a>
+      <a href="https://www.amazon.in/s?k=boAt+Airdopes+141&tag=techrevie006f-21&linkCode=ll2&linkId=a1ecb441a060cd526b75501f72ae27c0&language=en_IN&ref_=as_li_ss_tl" target="_blank" class="btn">Check Price on Amazon</a>
     </div>
 
     <div class="card" onclick="openModal(2)">
       <img src="https://m.media-amazon.com/images/I/818iNyzckGL._SL1500_.jpg" alt="Laptop">
       <h4>ASUS Vivobook 15</h4>
       <p>Powerful laptop for students and creators, slim and stylish.</p>
-      <a href="#" class="btn">Check Price on Amazon</a>
+      <a href="https://www.amazon.in/s?k=ASUS+Vivobook+15&tag=techrevie006f-21&linkCode=ll2&linkId=a1ecb441a060cd526b75501f72ae27c0&language=en_IN&ref_=as_li_ss_tl" target="_blank" class="btn">Check Price on Amazon</a>
     </div>
 
     <div class="card" onclick="openModal(3)">
       <img src="https://m.media-amazon.com/images/I/71jMrqfTI8L._SL1500_.jpg" alt="Smartphone">
       <h4>Redmi Note 12</h4>
       <p>High-performance smartphone with AMOLED display and fast charging.</p>
-      <a href="#" class="btn">Check Price on Amazon</a>
+      <a href="https://www.amazon.in/s?k=Redmi+Note+12&tag=techrevie006f-21&linkCode=ll2&linkId=a1ecb441a060cd526b75501f72ae27c0&language=en_IN&ref_=as_li_ss_tl" target="_blank" class="btn">Check Price on Amazon</a>
     </div>
 
     <div class="card" onclick="openModal(4)">
       <img src="https://m.media-amazon.com/images/I/71BY+Xg9OuL._SL1500_.jpg" alt="Tablet">
       <h4>Lenovo Tab M10</h4>
       <p>Entertainment and productivity tablet for family and students.</p>
-      <a href="#" class="btn">Check Price on Amazon</a>
+      <a href="https://www.amazon.in/s?k=Lenovo+Tab+M10&tag=techrevie006f-21&linkCode=ll2&linkId=a1ecb441a060cd526b75501f72ae27c0&language=en_IN&ref_=as_li_ss_tl" target="_blank" class="btn">Check Price on Amazon</a>
     </div>
   </div>
 </section>
@@ -383,7 +400,7 @@ const products = [
     title: "NoiseFit Halo Smartwatch",
     desc: "AMOLED display, Bluetooth calling, 7-day battery life. Perfect for fitness tracking and daily notifications.",
     image: "https://m.media-amazon.com/images/I/71aTghUQfqL._SL1500_.jpg",
-    link: "https://www.amazon.in/dp/B09N1XXB1Q",
+    link: "https://www.amazon.in/dp/B09N1XXB1Q/?tag=techrevie006f-21&linkCode=ll2&linkId=a1ecb441a060cd526b75501f72ae27c0&language=en_IN&ref_=as_li_ss_tl",
     price: "₹3,499",
     rating: 4.3,
     features: ["AMOLED Display", "Bluetooth Calling", "7-Day Battery Life", "Fitness & Sleep Tracking", "Lightweight Design"],
@@ -393,7 +410,7 @@ const products = [
     title: "boAt Airdopes 141",
     desc: "Deep bass, fast charging, and long-lasting performance. Ideal for music lovers and gamers on the go.",
     image: "https://m.media-amazon.com/images/I/716CRTrQzgL._SL1500_.jpg",
-    link: "https://www.amazon.in/dp/B07XYZ1234",
+    link: "https://www.amazon.in/s?k=boAt+Airdopes+141&tag=techrevie006f-21&linkCode=ll2&linkId=a1ecb441a060cd526b75501f72ae27c0&language=en_IN&ref_=as_li_ss_tl",
     price: "₹1,299",
     rating: 4.5,
     features: ["Deep Bass Sound", "Fast Charging", "Bluetooth 5.0", "Long Battery Life", "Compact & Comfortable Fit"],
@@ -403,7 +420,7 @@ const products = [
     title: "ASUS Vivobook 15",
     desc: "Powerful laptop for students and creators, slim and stylish. Excellent performance for multitasking and content creation.",
     image: "https://m.media-amazon.com/images/I/818iNyzckGL._SL1500_.jpg",
-    link: "https://www.amazon.in/dp/B08XYZ4567",
+    link: "https://www.amazon.in/s?k=ASUS+Vivobook+15&tag=techrevie006f-21&linkCode=ll2&linkId=a1ecb441a060cd526b75501f72ae27c0&language=en_IN&ref_=as_li_ss_tl",
     price: "₹45,990",
     rating: 4.4,
     features: ["Intel i5 Processor", "8GB RAM", "512GB SSD", "Full HD Display", "Slim & Lightweight Design"],
@@ -413,7 +430,7 @@ const products = [
     title: "Redmi Note 12",
     desc: "High-performance smartphone with AMOLED display and fast charging. Ideal for photography and gaming.",
     image: "https://m.media-amazon.com/images/I/71jMrqfTI8L._SL1500_.jpg",
-    link: "https://www.amazon.in/dp/B09ABC9876",
+    link: "https://www.amazon.in/s?k=Redmi+Note+12&tag=techrevie006f-21&linkCode=ll2&linkId=a1ecb441a060cd526b75501f72ae27c0&language=en_IN&ref_=as_li_ss_tl",
     price: "₹13,499",
     rating: 4.6,
     features: ["AMOLED Display", "5000mAh Battery", "Fast Charging", "AI Camera", "Sleek Design"],
@@ -423,7 +440,7 @@ const products = [
     title: "Lenovo Tab M10",
     desc: "Entertainment and productivity tablet for family and students. Great for streaming and study apps.",
     image: "https://m.media-amazon.com/images/I/71BY+Xg9OuL._SL1500_.jpg",
-    link: "https://www.amazon.in/dp/B08DEF1234",
+    link: "https://www.amazon.in/s?k=Lenovo+Tab+M10&tag=techrevie006f-21&linkCode=ll2&linkId=a1ecb441a060cd526b75501f72ae27c0&language=en_IN&ref_=as_li_ss_tl",
     price: "₹11,999",
     rating: 4.2,
     features: ["10.1 inch Display", "Dolby Audio", "4GB RAM", "64GB Storage", "Lightweight & Portable"],

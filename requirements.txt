@@ -36,3 +36,5 @@ whitenoise
 dj-database-url
 psycopg2-binary
 django-cors-headers
+beautifulsoup4
+lxml
