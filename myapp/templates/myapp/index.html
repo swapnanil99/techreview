@@ -56,7 +56,8 @@
 
   <script>
     function getCSRFToken() {
-      return document.querySelector('[name=csrfmiddlewaretoken]').value;
+      const token = document.querySelector('[name=csrfmiddlewaretoken]');
+      return token ? token.value : '';
     }
 
     document.getElementById('trackBtn').addEventListener('click', async () => {
@@ -79,17 +80,29 @@
 
         try {
             const csrftoken = getCSRFToken();
+            
             const response = await fetch('/track-price/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRFToken': csrftoken
+                    'X-CSRFToken': csrftoken,
+                    'X-Requested-With': 'XMLHttpRequest'
                 },
-                body: JSON.stringify({ link })
+                body: JSON.stringify({ link }),
+                credentials: 'same-origin'
             });
 
+            // Check if response is JSON
+            const contentType = response.headers.get('content-type');
+            if (!contentType || !contentType.includes('application/json')) {
+                const text = await response.text();
+                console.error('Non-JSON response:', text);
+                throw new Error('Server returned non-JSON response. Please check the server logs.');
+            }
+
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                const errorData = await response.json();
+                throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
             }
 
             const data = await response.json();

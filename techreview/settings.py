@@ -124,6 +124,15 @@ CORS_ALLOWED_ORIGINS = [
     "https://web-production-e790.up.railway.app",
 ]
 
+# Additional CORS settings for Railway deployment
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_ORIGINS = False
+
+# CSRF settings for Railway
+CSRF_COOKIE_SECURE = False  # Set to True in production with HTTPS
+CSRF_COOKIE_HTTPONLY = False
+CSRF_COOKIE_SAMESITE = 'Lax'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

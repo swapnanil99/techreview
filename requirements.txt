@@ -35,3 +35,4 @@ zope.interface==8.0.1
 whitenoise
 dj-database-url
 psycopg2-binary
+django-cors-headers

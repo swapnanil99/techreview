@@ -15,21 +15,39 @@ def home(request):
 @require_POST
 def track_price(request):
     """Handle AJAX POST requests for tracking price."""
+    # Ensure this is an AJAX request
+    if not request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        return JsonResponse({'error': 'Invalid request type'}, status=400)
+    
     try:
         data = json.loads(request.body.decode('utf-8'))
         amazon_link = data.get('link')
 
-        if not amazon_link or "/dp/" not in amazon_link:
-            return JsonResponse({'error': 'Invalid Amazon link'}, status=400)
+        if not amazon_link:
+            return JsonResponse({'error': 'Amazon link is required'}, status=400)
+            
+        if "/dp/" not in amazon_link:
+            return JsonResponse({'error': 'Invalid Amazon link format'}, status=400)
 
         try:
             asin = amazon_link.split("/dp/")[1][:10]
+            if len(asin) < 10:
+                return JsonResponse({'error': 'Invalid ASIN in Amazon link'}, status=400)
         except Exception:
-            return JsonResponse({'error': 'Cannot extract ASIN'}, status=400)
+            return JsonResponse({'error': 'Cannot extract ASIN from link'}, status=400)
 
-        # Dummy test data — replace with real API logic later
-        months = ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"]
-        prices = [4999, 4799, 4599, 4899, 5200, 5000, 4800, 4700, 4600, 4500, 4400, 4300]
+        # Generate realistic dummy data based on ASIN for demo purposes
+        import random
+        random.seed(hash(asin) % 1000)  # Consistent data for same ASIN
+        
+        months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        base_price = random.randint(1000, 10000)
+        prices = []
+        
+        for i in range(12):
+            variation = random.randint(-500, 500)
+            price = max(100, base_price + variation + (i * 50))  # Slight trend
+            prices.append(price)
 
         return JsonResponse({
             'asin': asin,
@@ -37,10 +55,11 @@ def track_price(request):
             'prices': prices,
             'min': min(prices),
             'max': max(prices),
-            'link': amazon_link
+            'link': amazon_link,
+            'current_price': prices[-1]  # Current price (last month)
         })
 
     except json.JSONDecodeError:
-        return JsonResponse({'error': 'Invalid JSON data'}, status=400)
+        return JsonResponse({'error': 'Invalid JSON data received'}, status=400)
     except Exception as e:
-        return JsonResponse({'error': str(e)}, status=500)
+        return JsonResponse({'error': f'Server error: {str(e)}'}, status=500)
