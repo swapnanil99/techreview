@@ -5,150 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TechReview – Amazon Product Reviews</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-    body { background-color: #f9fafb; color: #333; }
-
-    header {
-      background-color: #0f1111;
-      color: white;
-      padding: 15px 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    header h1 { font-size: 1.5rem; letter-spacing: 1px; }
-    nav a {
-      color: white;
-      margin-left: 20px;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    nav a:hover { color: #ff9900; }
-
-    .hero {
-      text-align: center;
-      padding: 100px 20px;
-      background: linear-gradient(120deg, #ff9900, #ffb84d);
-      color: #fff;
-    }
-    .hero h2 { font-size: 3rem; margin-bottom: 15px; }
-    .hero p { font-size: 1.3rem; }
-    .hero button {
-      margin-top: 25px;
-      padding: 12px 30px;
-      border: none;
-      background-color: #fff;
-      color: #ff9900;
-      font-weight: bold;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .hero button:hover { background-color: #f4f4f4; }
-
-    .section {
-      padding: 60px 5%;
-    }
-    .section h3 {
-      font-size: 2rem;
-      text-align: center;
-      margin-bottom: 40px;
-      color: #0f1111;
-    }
-
-    .products, .articles, .testimonials {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: white;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      transition: transform 0.2s ease;
-    }
-    .card:hover { transform: translateY(-5px); }
-    .card img {
-      width: 100%;
-      border-radius: 10px;
-      height: 180px;
-      object-fit: cover;
-    }
-    .card h4 { margin-top: 10px; font-size: 1.3rem; }
-    .card p { font-size: 0.95rem; margin-top: 5px; }
-    .btn {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 8px 15px;
-      background: #ff9900;
-      color: white;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .btn:hover { background: #e68900; }
-
-    .testimonial-card {
-      text-align: center;
-      padding: 20px;
-    }
-    .testimonial-card img {
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 10px;
-    }
-    .testimonial-card p { font-style: italic; margin: 10px 0; }
-
-    .newsletter {
-      text-align: center;
-      margin-top: 30px;
-    }
-    .newsletter input {
-      padding: 10px 15px;
-      width: 300px;
-      max-width: 90%;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      margin-right: 10px;
-    }
-    .newsletter button {
-      padding: 10px 20px;
-      border: none;
-      background: #ff9900;
-      color: white;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .newsletter button:hover { background: #e68900; }
-
-    .faq-item {
-      background: white;
-      padding: 15px 20px;
-      border-radius: 8px;
-      margin-bottom: 15px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    .faq-item h4 { font-size: 1.1rem; cursor: pointer; }
-    .faq-item p { display: none; margin-top: 8px; }
-
-    footer {
-      background: #0f1111;
-      color: #ddd;
-      text-align: center;
-      padding: 40px 10px;
-      margin-top: 40px;
-    }
-    footer p { font-size: 0.9rem; line-height: 1.6; }
-    footer a { color:#ff9900; text-decoration:none; }
-  </style>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
   <!-- Header -->
@@ -175,47 +32,23 @@
 </section>
 <!-- End Hero Section -->
 
- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TechReview – Amazon Product Reviews</title>
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
-  <!-- Hero & Products code goes here -->
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TechReview – Amazon Product Reviews</title>
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
   {% csrf_token %}
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   
   <!-- Roll Dice Section -->
-  <section id="roll-dice" style="padding:40px 5%; text-align:center; background:#f0f0f0; border-radius:10px; margin:40px auto; max-width:900px;">
-    <h3 style="margin-bottom:20px;">🎲 Roll Dice: Track Amazon Prices</h3>
+  <section id="roll-dice">
+    <h3>🎲 Roll Dice: Track Amazon Prices</h3>
 
-    <input type="text" id="amazonLink" placeholder="Paste Amazon link" 
-           style="width:60%; padding:10px; border-radius:5px; border:1px solid #ccc; margin-right:10px;">
+    <input type="text" id="amazonLink" placeholder="Paste Amazon link">
 
-    <button id="trackBtn" 
-            style="padding:10px 20px; border:none; background:#ff9900; color:white; border-radius:5px; cursor:pointer;">
+    <button id="trackBtn">
       Track Price
     </button>
 
-    <div id="priceGraphContainer" style="margin-top:30px; display:none;">
-      <canvas id="priceGraph" style="max-width:600px; margin:auto;"></canvas>
-      <p id="priceStats" style="margin-top:10px; font-weight:bold;"></p>
-      <a id="goAmazon" href="#" target="_blank" 
-         style="display:inline-block; margin-top:10px; padding:8px 15px; background:#ff9900; color:white; border-radius:5px; text-decoration:none;">
+    <div id="priceGraphContainer">
+      <canvas id="priceGraph"></canvas>
+      <p id="priceStats"></p>
+      <a id="goAmazon" href="#" target="_blank">
         Go to Amazon Product
       </a>
     </div>
@@ -228,11 +61,24 @@
 
     document.getElementById('trackBtn').addEventListener('click', async () => {
         const link = document.getElementById('amazonLink').value.trim();
-        if (!link.includes("/dp/")) return alert("Invalid Amazon link");
+        const trackBtn = document.getElementById('trackBtn');
+        
+        if (!link) {
+            alert("Please enter an Amazon link");
+            return;
+        }
+        
+        if (!link.includes("/dp/")) {
+            alert("Invalid Amazon link. Please make sure it's a product page URL.");
+            return;
+        }
 
-        const csrftoken = getCSRFToken();
+        // Show loading state
+        trackBtn.textContent = "Tracking...";
+        trackBtn.disabled = true;
 
         try {
+            const csrftoken = getCSRFToken();
             const response = await fetch('/track-price/', {
                 method: 'POST',
                 headers: {
@@ -242,48 +88,64 @@
                 body: JSON.stringify({ link })
             });
 
-            const data = await response.json();
-
-            if (response.ok) {
-                document.getElementById('priceGraphContainer').style.display = 'block';
-                document.getElementById('priceStats').innerText = `Min: ₹${data.min} | Max: ₹${data.max}`;
-                document.getElementById('goAmazon').href = data.link;
-
-                const ctx = document.getElementById('priceGraph').getContext('2d');
-
-                // Destroy previous chart if exists
-                if (window.priceChart) window.priceChart.destroy();
-
-                window.priceChart = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: data.months,
-                        datasets: [{
-                            label: 'Price (₹)',
-                            data: data.prices,
-                            borderColor: '#ff9900',
-                            backgroundColor: 'rgba(255,153,0,0.2)',
-                            tension: 0.3,
-                            fill: true
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        plugins: { legend: { display: true } }
-                    }
-                });
-            } else {
-                alert(data.error || "Something went wrong");
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
 
+            const data = await response.json();
+
+            document.getElementById('priceGraphContainer').style.display = 'block';
+            document.getElementById('priceStats').innerText = `Min: ₹${data.min} | Max: ₹${data.max}`;
+            document.getElementById('goAmazon').href = data.link;
+
+            const ctx = document.getElementById('priceGraph').getContext('2d');
+
+            // Destroy previous chart if exists
+            if (window.priceChart) window.priceChart.destroy();
+
+            window.priceChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: data.months,
+                    datasets: [{
+                        label: 'Price (₹)',
+                        data: data.prices,
+                        borderColor: '#ff9900',
+                        backgroundColor: 'rgba(255,153,0,0.2)',
+                        tension: 0.3,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { 
+                        legend: { display: true },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            grid: {
+                                color: 'rgba(0,0,0,0.1)'
+                            }
+                        }
+                    }
+                }
+            });
+
         } catch (err) {
-            alert("Error: " + err.message);
+            console.error('Error tracking price:', err);
+            alert("Error tracking price: " + (err.message || "Please try again later"));
+        } finally {
+            // Reset button state
+            trackBtn.textContent = "Track Price";
+            trackBtn.disabled = false;
         }
     });
   </script>
-</body>
-</html>
-
 
 <!-- Featured Products Section -->
 <section class="section" id="products">
@@ -327,9 +189,9 @@
 </section>
 
 <!-- Product Modal Popup -->
-<div id="productModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:10000; overflow:auto;">
-  <div style="background:white; padding:30px; border-radius:15px; max-width:700px; width:95%; position:relative; box-shadow:0 10px 30px rgba(0,0,0,0.3); font-family:'Poppins', sans-serif;">
-    <span style="position:absolute; top:15px; right:20px; cursor:pointer; font-size:2rem; font-weight:bold;" onclick="closeModal()">&times;</span>
+<div id="productModal" class="modal">
+  <div class="modal-content">
+    <span class="modal-close" onclick="closeModal()">&times;</span>
     
     <div style="display:flex; flex-direction: column; gap:20px;">
       <img id="modalImage" src="" alt="Product Image" style="width:100%; border-radius:12px; object-fit:contain; max-height:400px;">
@@ -415,7 +277,14 @@ function openModal(index) {
   modal.style.display = 'flex';
 
   const product = products[index];
-  document.getElementById('modalImage').src = product.image;
+  const modalImage = document.getElementById('modalImage');
+  
+  // Add error handling for image loading
+  modalImage.onerror = function() {
+    this.src = 'https://via.placeholder.com/400x300/f0f0f0/999999?text=Image+Not+Available';
+  };
+  
+  modalImage.src = product.image;
   document.getElementById('modalTitle').innerText = product.title;
   document.getElementById('modalDesc').innerText = product.desc;
   document.getElementById('modalPrice').innerText = product.price;
@@ -453,14 +322,42 @@ function openModal(index) {
 function closeModal() {
   document.getElementById('productModal').style.display = 'none';
 }
+
+// Add keyboard navigation
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    const productModal = document.getElementById('productModal');
+    const suggestionModal = document.getElementById('suggestionModal');
+    
+    if (productModal.style.display === 'flex') {
+      closeModal();
+    }
+    if (suggestionModal.style.display === 'flex') {
+      closeSuggestionModal();
+    }
+  }
+});
+
+// Close modals when clicking outside
+document.addEventListener('click', function(event) {
+  const productModal = document.getElementById('productModal');
+  const suggestionModal = document.getElementById('suggestionModal');
+  
+  if (event.target === productModal) {
+    closeModal();
+  }
+  if (event.target === suggestionModal) {
+    closeSuggestionModal();
+  }
+});
 </script>
 
 
  <!-- Suggestions Section -->
-<section class="section" id="suggestions" style="padding:80px 5%; background:#f4f4f9; border-radius:15px; margin:50px auto;">
-  <h3 style="text-align:center; font-size:2.5rem; margin-bottom:50px; color:#111;">💡 Top Suggestions</h3>
+<section class="section" id="suggestions" style="background:#f4f4f9; border-radius:15px; margin:50px auto;">
+  <h3 style="font-size:2.5rem; color:#111;">💡 Top Suggestions</h3>
 
-  <div class="articles" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:30px;">
+  <div class="articles" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:30px;">
 
     <!-- Card 1 -->
     <div class="suggestion-card">
@@ -468,7 +365,7 @@ function closeModal() {
       <div class="card-content">
         <h4>Top 10 Smartphones 2025</h4>
         <p>Explore the best smartphones launched in 2025 with top features, performance, and value.</p>
-        <a href="javascript:void(0)" class="btn">Check Suggestions</a>
+        <a href="#" class="btn" onclick="openSuggestionModal(0)">Check Suggestions</a>
       </div>
     </div>
 
@@ -478,7 +375,7 @@ function closeModal() {
       <div class="card-content">
         <h4>Top 10 Laptops for Students</h4>
         <p>Find laptops that are perfect for studying, gaming, and content creation in 2025.</p>
-        <a href="javascript:void(0)" class="btn">Check Suggestions</a>
+        <a href="#" class="btn" onclick="openSuggestionModal(1)">Check Suggestions</a>
       </div>
     </div>
 
@@ -488,7 +385,7 @@ function closeModal() {
       <div class="card-content">
         <h4>Top 5 TWS Earphones</h4>
         <p>Discover the best truly wireless earbuds for music lovers and gamers.</p>
-        <a href="javascript:void(0)" class="btn">Check Suggestions</a>
+        <a href="#" class="btn" onclick="openSuggestionModal(2)">Check Suggestions</a>
       </div>
     </div>
 
@@ -498,7 +395,7 @@ function closeModal() {
       <div class="card-content">
         <h4>Budget-Friendly Smartphones</h4>
         <p>Best value smartphones under ₹15,000 that offer great performance and battery life.</p>
-        <a href="javascript:void(0)" class="btn">Check Suggestions</a>
+        <a href="#" class="btn" onclick="openSuggestionModal(3)">Check Suggestions</a>
       </div>
     </div>
 
@@ -508,16 +405,16 @@ function closeModal() {
       <div class="card-content">
         <h4>Top Gaming Laptops 2025</h4>
         <p>High-performance laptops for gaming enthusiasts with latest GPUs and displays.</p>
-        <a href="javascript:void(0)" class="btn">Check Suggestions</a>
+        <a href="#" class="btn" onclick="openSuggestionModal(4)">Check Suggestions</a>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- Modal -->
-<div id="suggestionModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; z-index:10000; overflow:auto;">
-  <span style="position:absolute; top:20px; right:30px; font-size:3rem; color:white; cursor:pointer;" onclick="closeSuggestionModal()">&times;</span>
+<!-- Suggestion Modal -->
+<div id="suggestionModal" class="modal" style="background:rgba(0,0,0,0.9);">
+  <span class="modal-close" onclick="closeSuggestionModal()" style="color:white; font-size:3rem; top:20px; right:30px;">&times;</span>
   <div style="text-align:center; max-width:90%; margin:auto; color:white;">
     <img id="suggestionImage" src="" alt="Suggestion Image" style="width:100%; max-height:80vh; object-fit:contain; border-radius:10px; margin-bottom:20px;">
     <h2 id="suggestionTitle" style="margin-bottom:10px;"></h2>
@@ -525,77 +422,6 @@ function closeModal() {
   </div>
 </div>
 
-<style>
-  .suggestion-card {
-    background:white;
-    border-radius:12px;
-    overflow:hidden;
-    box-shadow:0 5px 15px rgba(0,0,0,0.05);
-    transition: transform 0.3s, box-shadow 0.3s;
-    display:flex;
-    flex-direction:column;
-    cursor:pointer;
-  }
-
-  .suggestion-card:hover {
-    transform: translateY(-10px);
-    box-shadow:0 20px 40px rgba(0,0,0,0.08);
-  }
-
-  .card-image {
-    width:100%;
-    height:180px;
-    background-size:cover;
-    background-position:center;
-  }
-
-  .card-content {
-    padding:20px;
-    display:flex;
-    flex-direction:column;
-    gap:15px;
-    flex-grow:1;
-  }
-
-  .card-content h4 {
-    font-size:1.3rem;
-    color:#111;
-    margin:0;
-    position:relative;
-  }
-
-  .card-content h4::after {
-    content:"";
-    display:block;
-    width:50px;
-    height:4px;
-    background: linear-gradient(90deg, #ff7e5f, #feb47b);
-    border-radius:2px;
-    margin-top:6px;
-  }
-
-  .card-content p {
-    color:#555;
-    font-size:1rem;
-    line-height:1.5;
-  }
-
-  .btn {
-    text-align:center;
-    background:#ff7e5f;
-    color:white;
-    font-weight:bold;
-    padding:10px 20px;
-    border-radius:8px;
-    text-decoration:none;
-    transition:0.3s;
-    margin-top:auto; /* align button at bottom */
-  }
-
-  .btn:hover {
-    background:#feb47b;
-  }
-</style>
 
 <script>
 const suggestions = [
@@ -626,15 +452,20 @@ const suggestions = [
   }
 ];
 
-document.querySelectorAll('.suggestion-card .btn').forEach((btn, index) => {
-  btn.addEventListener('click', () => {
-    const suggestion = suggestions[index];
-    document.getElementById('suggestionImage').src = suggestion.image;
-    document.getElementById('suggestionTitle').innerText = suggestion.title;
-    document.getElementById('suggestionDesc').innerText = suggestion.desc;
-    document.getElementById('suggestionModal').style.display = 'flex';
-  });
-});
+function openSuggestionModal(index) {
+  const suggestion = suggestions[index];
+  const suggestionImage = document.getElementById('suggestionImage');
+  
+  // Add error handling for image loading
+  suggestionImage.onerror = function() {
+    this.src = 'https://via.placeholder.com/800x400/f0f0f0/999999?text=Image+Not+Available';
+  };
+  
+  suggestionImage.src = suggestion.image;
+  document.getElementById('suggestionTitle').innerText = suggestion.title;
+  document.getElementById('suggestionDesc').innerText = suggestion.desc;
+  document.getElementById('suggestionModal').style.display = 'flex';
+}
 
 function closeSuggestionModal() {
   document.getElementById('suggestionModal').style.display = 'none';
