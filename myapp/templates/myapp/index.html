@@ -151,19 +151,106 @@
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
+ <!-- Header -->
+<header>
+  <div class="logo">
     <h1>TechReview</h1>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#products">Products</a>
-      <a href="#articles">Reviews</a>
-      <a href="#about">About</a>
-      <a href="#testimonials">Testimonials</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+  </div>
+  <div class="hamburger" id="hamburger">
+    &#9776; <!-- Hamburger icon -->
+  </div>
+  <nav id="nav-links">
+    <a href="#">Home</a>
+    <a href="#products">Products</a>
+    <a href="#articles">Reviews</a>
+    <a href="#about">About</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #111;
+    color: #fff;
+    position: relative;
+  }
+
+  .logo h1 {
+    font-size: 24px;
+  }
+
+  nav {
+    display: flex;
+    gap: 15px;
+  }
+
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+  }
+
+  .hamburger {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+  }
+
+  /* Mobile View */
+  @media (max-width: 768px) {
+    nav {
+      display: none;
+      flex-direction: column;
+      background-color: #111;
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      width: 200px;
+      border-radius: 8px;
+      padding: 10px 0;
+    }
+
+    nav a {
+      padding: 10px 20px;
+      border-bottom: 1px solid #333;
+    }
+
+    nav a:last-child {
+      border-bottom: none;
+    }
+
+    .hamburger {
+      display: block;
+    }
+
+    nav.active {
+      display: flex;
+    }
+  }
+</style>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+</script>
+
 
   <!-- Hero Section -->
 <section class="hero">
