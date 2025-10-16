@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_protect, ensure_csrf_cookie
 from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import csrf_exempt
 import json
 import re
 import random
@@ -110,3 +111,16 @@ def convert_affiliate(request):
         return JsonResponse({'error': 'Invalid JSON data received'}, status=400)
     except Exception as e:
         return JsonResponse({'error': f'Server error: {str(e)}'}, status=500)
+
+
+def csrf_failure_view(request, reason=""):
+    """Custom CSRF failure view that returns JSON for AJAX requests."""
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        return JsonResponse({
+            'error': 'CSRF verification failed. Please refresh the page and try again.',
+            'reason': reason
+        }, status=403)
+    
+    # For non-AJAX requests, return the default CSRF failure page
+    from django.views.decorators.csrf import csrf_failure_view as default_csrf_failure_view
+    return default_csrf_failure_view(request, reason)

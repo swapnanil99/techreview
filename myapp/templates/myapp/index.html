@@ -291,7 +291,20 @@
   <script>
     function getCSRFToken() {
       const token = document.querySelector('[name=csrfmiddlewaretoken]');
-      return token ? token.value : '';
+      if (token) {
+        return token.value;
+      }
+      
+      // Fallback: try to get token from cookies
+      const cookies = document.cookie.split(';');
+      for (let cookie of cookies) {
+        const [name, value] = cookie.trim().split('=');
+        if (name === 'csrftoken') {
+          return value;
+        }
+      }
+      
+      return '';
     }
 
     document.getElementById('trackBtn').addEventListener('click', async () => {
@@ -314,6 +327,10 @@
 
         try {
             const csrftoken = getCSRFToken();
+            
+            if (!csrftoken) {
+                throw new Error('CSRF token not found. Please refresh the page and try again.');
+            }
             
             // First get price tracking data
             const response = await fetch('/track-price/', {
@@ -350,11 +367,20 @@
                     'X-CSRFToken': csrftoken,
                     'X-Requested-With': 'XMLHttpRequest'
                 },
-                body: JSON.stringify({ link })
+                body: JSON.stringify({ link }),
+                credentials: 'same-origin'
             });
 
-            const affiliateData = await affiliateResponse.json();
-            const affiliateLink = affiliateData.affiliate_link || link; // Fallback to original link if conversion fails
+            // Check if affiliate response is JSON
+            const affiliateContentType = affiliateResponse.headers.get('content-type');
+            let affiliateLink = link; // Default fallback
+            
+            if (affiliateContentType && affiliateContentType.includes('application/json')) {
+                const affiliateData = await affiliateResponse.json();
+                affiliateLink = affiliateData.affiliate_link || link;
+            } else {
+                console.warn('Affiliate conversion returned non-JSON response, using original link');
+            }
 
             document.getElementById('priceGraphContainer').style.display = 'block';
             document.getElementById('priceStats').innerText = `Min: ₹${data.min} | Max: ₹${data.max}`;

@@ -33,6 +33,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -40,8 +41,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'techreview.urls'
@@ -118,10 +117,16 @@ CSRF_TRUSTED_ORIGINS = [
     'http://localhost:8000',
     'http://127.0.0.1:8000',
     'https://web-production-e790.up.railway.app',
+    # Add your custom domain here - replace with your actual custom domain
+    # 'https://yourdomain.com',
+    # 'https://www.yourdomain.com',
 ]
 
 CORS_ALLOWED_ORIGINS = [
     "https://web-production-e790.up.railway.app",
+    # Add your custom domain here - replace with your actual custom domain
+     "https://techreview.social",
+    # "https://www.yourdomain.com",
 ]
 
 # Additional CORS settings for Railway deployment
@@ -129,12 +134,19 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_ALL_ORIGINS = False
 
 # CSRF settings for Railway
-CSRF_COOKIE_SECURE = False  # Set to True in production with HTTPS
+CSRF_COOKIE_SECURE = True  # Set to True in production with HTTPS
 CSRF_COOKIE_HTTPONLY = False
 CSRF_COOKIE_SAMESITE = 'Lax'
+
+# Additional settings for production
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+USE_TZ = True
 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Custom CSRF failure view for JSON responses
+CSRF_FAILURE_VIEW = 'myapp.views.csrf_failure_view'
